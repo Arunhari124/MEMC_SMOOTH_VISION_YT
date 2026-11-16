@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SmoothVision test page</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body class="page">
+  <main>
+    <h1>SmoothVision test page</h1>
+    <p class="lede">A 30 fps clip with a fast-panning background, an orbiting ball and a sweeping bar, played through the same engine that runs on YouTube. Switch smoothing off and on to compare, or pick your own video file.</p>
+
+    <div id="stage">
+      <video id="v" src="test-30fps.mp4" muted loop autoplay playsinline></video>
+    </div>
+
+    <div class="bar">
+      <button type="button" id="play" class="ghost">Pause</button>
+      <label>Smoothing
+        <select id="mode">
+          <option value="off">Off</option>
+          <option value="dup">Duplicate</option>
+          <option value="blend">Blend</option>
+          <option value="mc">Optical flow</option>
+        </select>
+      </label>
+      <label>Quality
+        <select id="quality">
+          <option value="low">Low</option>
+          <option value="balanced">Balanced</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="hud"> Readout on video</label>
+      <label>Your own file <input type="file" id="file" accept="video/*"></label>
+    </div>
+
+    <p id="state" class="idle">Starting…</p>
+    <dl id="diag"></dl>
+  </main>
+  <script src="engine.js"></script>
+  <script src="test.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SmoothVision</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body class="popup">
+  <header>
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="8" fill="#0d1d27"/>
+      <path d="M9 11v10l5-5z" fill="#155e75"/>
+      <path d="M14 9v14l8-7z" fill="#0e7490"/>
+      <path d="M19 7v18l9-9z" fill="#22d3ee"/>
+    </svg>
+    <div>
+      <h1>SmoothVision</h1>
+      <p id="state" class="idle">Looking for a video…</p>
+    </div>
+  </header>
+
+  <section class="hero" aria-live="polite">
+    <div class="num"><span id="src">–</span><small>source fps</small></div>
+    <div class="join" aria-hidden="true"></div>
+    <div class="num out"><span id="out">–</span><small>shown fps</small></div>
+  </section>
+  <p id="note" class="note" hidden></p>
+
+  <fieldset>
+    <legend>Smoothing</legend>
+    <div class="seg" id="mode" role="radiogroup" aria-label="Smoothing mode">
+      <button type="button" role="radio" data-v="off">Off</button>
+      <button type="button" role="radio" data-v="dup" title="Repeats frames. Same as normal playback, handy for comparing.">Duplicate</button>
+      <button type="button" role="radio" data-v="blend" title="Cross-fades neighbouring frames. Light on the GPU, can look ghosty.">Blend</button>
+      <button type="button" role="radio" data-v="mc" title="Estimates motion and builds the in-between frame, like TV motion smoothing.">Optical flow</button>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Quality</legend>
+    <div class="seg" id="quality" role="radiogroup" aria-label="Optical flow quality">
+      <button type="button" role="radio" data-v="low">Low</button>
+      <button type="button" role="radio" data-v="balanced">Balanced</button>
+      <button type="button" role="radio" data-v="high">High</button>
+    </div>
+  </fieldset>
+
+  <label class="row"><input type="checkbox" id="auto"><span>Step down automatically if the GPU falls behind</span></label>
+  <label class="row"><input type="checkbox" id="hud"><span>Show a readout on the video</span></label>
+
+  <details>
+    <summary>Diagnostics</summary>
+    <dl id="diag"></dl>
+  </details>
+
+  <footer>
+    <button type="button" id="test" class="ghost">Open test page</button>
+    <span>Alt+S switches smoothing on and off</span>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>

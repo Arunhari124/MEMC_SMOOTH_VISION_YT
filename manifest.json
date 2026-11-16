@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SmoothVision",
+  "version": "1.0.0",
+  "description": "Real-time motion smoothing (frame interpolation) for YouTube, computed locally on your GPU. No servers, no accounts.",
+  "minimum_chrome_version": "100",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "SmoothVision",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "js": ["engine.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
